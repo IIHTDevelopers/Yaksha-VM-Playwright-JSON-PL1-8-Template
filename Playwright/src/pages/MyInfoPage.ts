@@ -12,13 +12,13 @@ export class MyInfoPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.spanMsg=  page.locator("//span[text()='Required']");
+    this.spanMsg=  page.locator("");
 
-    this.myInfoTab = page.locator('a:has-text("My Info")');
-    this.nameField = page.locator('input[name="firstName"]');
-    this.saveButton = page.locator("form:has-text('Employee') button").first();
-    this.profileDropdown = page.locator(".oxd-userdropdown-name");
-    this.subTabLinks = page.locator(".orangehrm-tabs > div > a");
+    this.myInfoTab = page.locator('');
+    this.nameField = page.locator('');
+    this.saveButton = page.locator("").first();
+    this.profileDropdown = page.locator("");
+    this.subTabLinks = page.locator("");
   }
 
   /**
@@ -26,8 +26,6 @@ export class MyInfoPage {
  */
 
   async clickMyInfoTab() {
-    await this.myInfoTab.click();
-    return this.page.url();
   }
 
 /**
@@ -35,10 +33,6 @@ export class MyInfoPage {
  */
 
   async clearAndEnterName(){
-    await this.clickMyInfoTab();
-    await this.nameField.click();
-    await this.nameField.clear();
-    return this.spanMsg.innerText();
   }
 
   /**
@@ -46,30 +40,13 @@ export class MyInfoPage {
  */
 
   async updateUniqueNAmeAndVerifyName(newName: string){
-    await this.clickMyInfoTab();
-    await this.nameField.click();
-    await this.nameField.clear();    
-    await this.nameField.fill(newName);
-    await this.saveButton.click();
-    await this.page.reload();
-    await this.page.waitForTimeout(2000);
-    const displayedProfileName =await this.page.locator("//p[@class='oxd-userdropdown-name']").innerText();
-
-    return displayedProfileName;
-    
   }
 
   async getDisplayedProfileName(): Promise<string> {
-    return await this.profileDropdown.innerText();
+    return "";
   }
 
-  async getSubTabHrefs(): Promise<string[]> {
-    const count = await this.subTabLinks.count();
-    const hrefs: string[] = [];
-    for (let i = 0; i < count; i++) {
-      const href = await this.subTabLinks.nth(i).getAttribute("href");
-      if (href) hrefs.push(href);
-    }
-    return hrefs;
+  async getSubTabHrefs(): Promise<string[]> {    
+    return [];
   }
 }
