@@ -12,21 +12,14 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.usernameInput = page.locator(
-      "//input[@placeholder='username' or @placeholder='Username']"
-    );
-    this.passwordInput = page.locator(
-      "//input[@placeholder='password' or @placeholder='Password']"
-    );
-    this.loginButton = page.locator("//button[@type='submit']");
+    this.usernameInput = page.locator("");
+    this.passwordInput = page.locator("");
+    this.loginButton = page.locator("");
     this.loginErrorMessage = page.locator(``);
-    this.adminButton = page.locator('//li[@class="oxd-userdropdown"]');
-    this.logOut = page.locator("//ul[@class='oxd-dropdown-menu']/li[4]");
+    this.adminButton = page.locator('');
+    this.logOut = page.locator("");
   }
   async performLogin() {
-    await this.usernameInput.fill(data.ValidLogin.ValidUserName);
-    await this.passwordInput.fill(data.ValidLogin.ValidPassword);
-    await this.loginButton.click();
   }
 
   /**
@@ -42,12 +35,7 @@ export class LoginPage {
    */
 
   async performLogOut(): Promise<string> {
-    await this.adminButton.click();
-    await this.logOut.click();
-    const Url = await this.page.waitForURL(
-      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-    );
-    return this.page.url();
+    return "";
   }
 }
 module.exports = { LoginPage };
