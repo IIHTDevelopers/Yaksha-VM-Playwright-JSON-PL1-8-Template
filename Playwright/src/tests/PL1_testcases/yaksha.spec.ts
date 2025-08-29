@@ -50,7 +50,7 @@ test.describe("Yaksha", () => {
  */
 
 
-  test.only("TS-2 Verify New 'Qualification' added could be edited from the record of user ", async ({ page }) => {
+  test("TS-2 Verify New 'Qualification' added could be edited from the record of user ", async ({ page }) => {
     const editInput = generateUniqueEditName();
    await myinfoPage.editQualification(editInput);
    const editlist= await  page.locator("//div[@class='oxd-table-row oxd-table-row--with-border']/div[2]").allInnerTexts();
@@ -294,4 +294,5 @@ function generateUniqueCompanyName(prefix: string = "Comp"): string {
   function generateUniqueEditComment(prefix: string = "GPA"): string {
     const timestamp = Date.now(); // Use timestamp to ensure uniqueness
     return `${prefix}_${timestamp}`;
+
   }
